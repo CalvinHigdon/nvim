@@ -5,11 +5,10 @@ lsp.preset('recommended')
 lsp.ensure_installed({
     'eslint', -- javascript
     'sumneko_lua', -- lua
-    'tsserver', -- c#
+    'tsserver', -- typescript
     'clangd', -- c++
-    'texlab', -- python
-    'omnisharp',
-    -- 'rust-analyzer', -- rust
+    'texlab', -- latex
+    'omnisharp', -- c#
 })
 
 lsp.nvim_workspace()
