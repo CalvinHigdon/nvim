@@ -9,6 +9,7 @@ lsp.ensure_installed({
     'clangd', -- c++
     'texlab', -- latex
     'omnisharp', -- c#
+    'marksman',
 })
 
 lsp.nvim_workspace()
