@@ -63,6 +63,7 @@ return packer.startup(function(use)
     use("szw/vim-maximizer")
 
     -- file navigation
+    use("echasnovski/mini.icons")
     use("nvim-tree/nvim-web-devicons")
     use("nvim-tree/nvim-tree.lua")
 
@@ -70,6 +71,7 @@ return packer.startup(function(use)
     use('theprimeagen/harpoon')
     
     -- fuzzy finding
+    -- use({ 'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' })
     use({ "nvim-telescope/telescope-fzf-native.nvim", run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build" }) -- helps telescope do good
     use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" })
 

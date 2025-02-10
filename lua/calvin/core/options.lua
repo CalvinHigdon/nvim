@@ -35,7 +35,7 @@ opt.splitbelow = true
 -- swap files and things
 opt.swapfile = false
 opt.backup = false
-opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+opt.undodir = "C:/Users/calvi/Documents/.vim/undodir"
 opt.undofile = true
 
 opt.updatetime = 50
