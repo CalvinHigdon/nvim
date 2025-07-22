@@ -9,6 +9,7 @@ Requires clang, neovim, vim, lua
 Windows:
 Requires CMake, neovim, vim, lua
 Top level folder (nvim) should be in ...\Users\<User>\AppData\Local
+I downloaded Visual Studio 2022 and then opened the Developer Command Line for Visual Studio 2022, then opened nvim and it automatically solved a weird and annoying "No C Compiler found" error
 
 Also install some fonts:
 https://www.nerdfonts.com/font-downloads
