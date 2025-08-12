@@ -6,4 +6,14 @@ require("dracula").setup(
     }
 )
 
-vim.cmd("colorscheme dracula")
+require("tokyonight").setup(
+    {
+        transparent = true,
+        styles = {
+            sidebars = "transparent",
+            floats = "transparent",
+        }
+    }
+)
+
+vim.cmd("colorscheme tokyonight")

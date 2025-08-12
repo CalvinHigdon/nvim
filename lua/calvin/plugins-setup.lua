@@ -1,93 +1,102 @@
-local ensure_packer = function()
-    local fn = vim.fn
-    local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-    if fn.empty(fn.glob(install_path)) > 0 then
-        fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
-        vim.cmd([[packadd packer.nvim]])
-        return true
-    end
-    return false
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
 end
-local packer_bootstrap = ensure_packer() -- true if packer was just installed
+vim.opt.rtp:prepend(lazypath)
 
--- autocommand that reloads neovim and installs/updates/removes plugins
--- when file is saved
-vim.cmd([[ 
-    augroup packer_user_config
-        autocmd!
-        autocmd BufWritePost plugins-setup.lua source <afile> | PackerSync
-    augroup end
-]])
+-- Make sure to setup `mapleader` and `maplocalleader` before
+-- loading lazy.nvim so that mappings are correct.
+-- This is also a good place to setup other settings (vim.opt)
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
-local status, packer = pcall(require, "packer")
-if not status then
-    return
-end
-
-return packer.startup(function(use)
-    use("wbthomason/packer.nvim")
-
+-- Setup lazy.nvim
+require("lazy").setup({
+  spec = {
     -- lua functions a lot of plugins use
-    use("nvim-lua/plenary.nvim")
+    {"nvim-lua/plenary.nvim"},
 
     --1--AESTHETICS----
     --
     -- colorscheme
-    use("folke/tokyonight.nvim")
-    use("Mofiqul/dracula.nvim")
+    {"folke/tokyonight.nvim"},
+    {"folke/lazy.nvim"},
+    {"Mofiqul/dracula.nvim"},
 
     -- statusline
-    use("nvim-lualine/lualine.nvim")
+    {"nvim-lualine/lualine.nvim"},
 
 
     --2--FOR CONVENIENCE----
     --
     -- essential plugins
-    use("tpope/vim-surround")
-    use("vim-scripts/ReplaceWithRegister")
+    {"tpope/vim-surround"},
+    {"vim-scripts/ReplaceWithRegister"},
 
     -- commenting with gc
-    use("numToStr/Comment.nvim")
+    {"numToStr/Comment.nvim"},
 
     -- which-key
-    use("folke/which-key.nvim")
+    {
+    "folke/which-key.nvim",
+        dependencies = {"echasnovski/mini.icons"}
+    },
 
     -- undotree
-    use('mbbill/undotree')
+    {'mbbill/undotree'},
 
 
     --3--WINDOW/TAB NAVIGATION----
     --
     -- tmux & split window navigation
-    use("christoomey/vim-tmux-navigator")
-    use("szw/vim-maximizer")
+    {"christoomey/vim-tmux-navigator"},
+    {"szw/vim-maximizer"},
 
     -- file navigation
-    use("echasnovski/mini.icons")
-    use("nvim-tree/nvim-web-devicons")
-    use("nvim-tree/nvim-tree.lua")
+    {"nvim-tree/nvim-web-devicons"},
+    {"nvim-tree/nvim-tree.lua"},
 
     -- harpoon
-    use('theprimeagen/harpoon')
+    {'theprimeagen/harpoon'},
     
     -- fuzzy finding
-    -- use({ 'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' })
-    use({ "nvim-telescope/telescope-fzf-native.nvim", run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build" }) -- helps telescope do good
-    use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" })
+    -- {{ 'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' }},
+    
+    -- init.lua:
+    {
+    'nvim-telescope/telescope.nvim', tag = '0.1.8',
+    -- or                              , branch = '0.1.x',
+      dependencies = { 'nvim-lua/plenary.nvim',  'iruzo/ripgrep.nvim', 'sharkdp/fd'}
+    },
 
     -- treesitter
-    use {
+    {
         'nvim-treesitter/nvim-treesitter',
         run = 'TSUpdate'
-    }
+    },
 
-    use {
+
+    -- linter
+    {
         'VonHeikemen/lsp-zero.nvim',
-        requires = {
+        dependencies = {
             -- LSP Support
             {'neovim/nvim-lspconfig'},
-            {'williamboman/mason.nvim'},
-            {'williamboman/mason-lspconfig.nvim'},
+            {'mason-org/mason-lspconfig.nvim'},
+            {'mason-org/mason.nvim'},
+            {'neovim/nvim-lspconfig'},
+            
 
             -- Autocompletion
             {'hrsh7th/nvim-cmp'},
@@ -101,12 +110,11 @@ return packer.startup(function(use)
             {'L3MON4D3/LuaSnip'},
             {'rafamadriz/friendly-snippets'},
         }
-    }
-
-
-
-
-    if packer_bootstrap then
-        require("packer").sync()
-    end
-end)
+    },
+  },
+  -- Configure any other settings here. See the documentation for more details.
+  -- colorscheme that will be used when installing plugins.
+  install = { colorscheme = { "habamax" } },
+  -- automatically check for plugin updates
+  checker = { enabled = true },
+})

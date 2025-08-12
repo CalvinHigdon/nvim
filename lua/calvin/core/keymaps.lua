@@ -10,11 +10,12 @@ keymap.set("n", "<leader>sv", "<C-w>v") -- split window vertically
 keymap.set("n", "<leader>sh", "<C-w>s") -- split window horizontally
 keymap.set("n", "<leader>s=", "<C-w>=") -- make split windows equal width
 keymap.set("n", "<leader>sx", ":close<CR>") -- close current split window
+-- CTRL-h goes left window, CTRL-l goes right window
 
-keymap.set("n", "<leader>to", ":tabnew<CR>")
-keymap.set("n", "<leader>tx", ":tabclose<CR>")
-keymap.set("n", "<leader>tn", ":tabn<CR>")
-keymap.set("n", "<leader>tp", ":tabp<CR>")
+keymap.set("n", "<leader>to", ":tabnew<CR>") -- open new tab
+keymap.set("n", "<leader>tx", ":tabclose<CR>") -- close tab
+keymap.set("n", "<leader>tn", ":tabn<CR>") -- next tab
+keymap.set("n", "<leader>tp", ":tabp<CR>") -- previous tab
 
 keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- visual mode moving lines down
 keymap.set("v", "K", ":m '<-2<CR>gv=gv") -- visual mode moving lines up
@@ -26,6 +27,7 @@ keymap.set("n", "N", "Nzzzv") -- looking through search results keeps cursor in 
 
 keymap.set("x", "<leader>p", "\"_dP") -- replace without messing up register
 
+-- Yank to System Clipboard
 keymap.set("n", "<leader>y", "\"+y") -- <leader>y yanks to system clipboard
 keymap.set("v", "<leader>y", "\"+y") -- <leader>y yanks to system clipboard
 keymap.set("n", "<leader>Y", "\"+Y") -- <leader>Y yanks to system clipboard
@@ -38,8 +40,6 @@ keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")  -- quickfix list
 keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz") -- quickfix list
 keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz") -- quickfix list
 keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz") -- quickfix list
-
-keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 
 -- plugin keymaps
 
@@ -61,14 +61,26 @@ keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
 local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
 
-vim.keymap.set("n", "<leader>a", mark.add_file)
-vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu)
+keymap.set("n", "<leader>a", mark.add_file)
+keymap.set("n", "<C-e>", ui.toggle_quick_menu)
 
 
-vim.keymap.set("n", "<C-y>", function() ui.nav_file(1) end)
-vim.keymap.set("n", "<C-t>", function() ui.nav_file(2) end)
-vim.keymap.set("n", "<C-n>", function() ui.nav_file(3) end)
-vim.keymap.set("n", "<C-s>", function() ui.nav_file(4) end)
+keymap.set("n", "<C-y>", function() ui.nav_file(1) end)
+keymap.set("n", "<C-t>", function() ui.nav_file(2) end)
+keymap.set("n", "<C-n>", function() ui.nav_next() end)
 
 -- undotree
 keymap.set("n", "<leader>u", "vim.cmd.UndotreeToggle")
+
+-- git integration
+vim.api.nvim_create_user_command(
+"WQQ",
+function()
+    vim.cmd ("w")
+    vim.cmd ("! git add -A")
+    vim.cmd ("! git commit -m Changes")
+    vim.cmd ("! git push")
+    vim.fn.input("Press ENTER to continue...")
+    vim.cmd ("q")
+end, {}
+)
