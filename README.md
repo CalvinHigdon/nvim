@@ -13,7 +13,7 @@ I downloaded Visual Studio 2022 and then opened the Developer Command Line for V
 ! This ended up breaking again. instead i had to download a c compiler from a special list
 
 Download neovim using chocolatey. chocolatey.org/install has the info on this
-
+Download zig using chocolatey in an elevated powershell
 
 Also install some fonts:
 https://www.nerdfonts.com/font-downloads
