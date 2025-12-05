@@ -111,6 +111,17 @@ require("lazy").setup({
             {'rafamadriz/friendly-snippets'},
         }
     },
+
+    {
+        'chipsenkbeil/distant.nvim', 
+        branch = 'v0.3',
+        config = function()
+            require('distant'):setup()
+        end
+    },
+
+    -- web dev
+    {'ray-x/web-tools.nvim'}, -- command: BrowserSync
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.

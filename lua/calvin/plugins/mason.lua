@@ -1,6 +1,6 @@
 require("mason").setup({})
 require("mason-lspconfig").setup({
-    ensure_installed = {'pyright'},
+    ensure_installed = {'pyright', 'css-lsp'},
     handlers = {
         function(server_name)
             require('lspconfig')[server_name].setup({})

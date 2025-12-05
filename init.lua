@@ -10,4 +10,5 @@ require("calvin.plugins.telescope")
 require("calvin.plugins.treesitter")
 require("calvin.core.colorscheme")
 require("calvin.plugins.which-key")
+require("calvin.plugins.web-tools")
 
