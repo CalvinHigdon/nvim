@@ -32,4 +32,6 @@ Currently using Caskaydia.
 
 Also, if you use this config on Windows, you must download zig (C/C++ compiler). GCC will be accessible automatically from Linux.
 
-Also must install npm to install python with Mason
+sudo apt install:
+Also must install **npm** to install python with Mason
+Install **XClip** in order to copy and paste to clipboard
