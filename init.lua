@@ -11,4 +11,5 @@ require("calvin.plugins.treesitter")
 require("calvin.core.colorscheme")
 require("calvin.plugins.which-key")
 require("calvin.plugins.web-tools")
+require("calvin.plugins.themery")
 

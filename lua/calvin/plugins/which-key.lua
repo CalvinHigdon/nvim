@@ -1,9 +1,8 @@
 require("which-key").setup({
-    window = {
+    win = {
         border = "single",
         margin = {0, 0, 1, 0}
     },
-
 })
 
 

@@ -35,8 +35,14 @@ opt.splitbelow = true
 -- swap files and things
 opt.swapfile = false
 opt.backup = false
-opt.undodir = "C:/Users/calvi/Documents/.vim/undodir"
 opt.undofile = true
+
+opt.undodir = vim.fn.expand("~/Documents/.vim/undo")
+-- above for Linux, below for Windows
+-- opt.undodir = "c://Users/calvi/Documents/.vim/undo")
 
 opt.updatetime = 50
 opt.timeoutlen=300
+
+-- I don't use luarocks
+-- opt.hererocks = false

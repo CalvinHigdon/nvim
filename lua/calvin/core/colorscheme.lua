@@ -1,4 +1,12 @@
--- transparent background
+-- transparent backgrounds
+
+themes = {
+    "catppuccin",
+    "dracula",
+    "everforest",
+    "nordic",
+    "tokyonight",
+}
 
 require("dracula").setup(
     {
@@ -16,4 +24,27 @@ require("tokyonight").setup(
     }
 )
 
-vim.cmd("colorscheme tokyonight")
+require("catppuccin").setup(
+    {
+        transparent_background = true,
+    }
+)
+
+require("everforest").setup(
+    {
+        transparent_background_level = 2,
+    }
+)
+
+require("nordic").setup(
+    {
+        transparent = {
+            bg = true,
+            float = false,
+        }
+    }
+)
+
+
+-- vim.cmd("colorscheme catppuccin")
+return themes
