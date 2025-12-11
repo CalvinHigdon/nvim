@@ -72,15 +72,3 @@ keymap.set("n", "<C-n>", function() ui.nav_next() end)
 -- undotree
 keymap.set("n", "<leader>u", "vim.cmd.UndotreeToggle")
 
--- git integration
-vim.api.nvim_create_user_command(
-"WQQ",
-function()
-    vim.cmd ("w")
-    vim.cmd ("! git add -A")
-    vim.cmd ("! git commit -m Changes")
-    vim.cmd ("! git push")
-    vim.fn.input("Press ENTER to continue...")
-    vim.cmd ("q")
-end, {}
-)

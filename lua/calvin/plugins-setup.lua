@@ -53,10 +53,10 @@ require("lazy").setup({
     {"numToStr/Comment.nvim"},
 
     -- which-key
-    {
-    "folke/which-key.nvim",
-        dependencies = {"echasnovski/mini.icons"}
-    },
+    -- {
+    -- "folke/which-key.nvim",
+    --    dependencies = {"echasnovski/mini.icons"}
+    -- },
 
     -- undotree
     {'mbbill/undotree'},

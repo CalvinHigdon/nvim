@@ -42,7 +42,7 @@ opt.undodir = vim.fn.expand("~/Documents/.vim/undo")
 -- opt.undodir = "c://Users/calvi/Documents/.vim/undo")
 
 opt.updatetime = 50
-opt.timeoutlen=300
+opt.timeoutlen = 300
 
 -- I don't use luarocks
 -- opt.hererocks = false
