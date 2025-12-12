@@ -24,15 +24,20 @@ vim.g.maplocalleader = "\\"
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
+    {"folke/lazy.nvim"},
+
     -- lua functions a lot of plugins use
     {"nvim-lua/plenary.nvim"},
 
     --1--AESTHETICS----
     --
     -- colorscheme
-    {"folke/tokyonight.nvim"},
-    {"folke/lazy.nvim"},
+    {"zaldih/themery.nvim"}, -- :Themery to run
+    {"catppuccin/nvim", name = "catppuccin", priority = 1000},
     {"Mofiqul/dracula.nvim"},
+    {"neanias/everforest-nvim"},
+    {"folke/tokyonight.nvim"},
+    {"AlexvZyl/nordic.nvim"},
 
     -- statusline
     {"nvim-lualine/lualine.nvim"},
@@ -48,10 +53,10 @@ require("lazy").setup({
     {"numToStr/Comment.nvim"},
 
     -- which-key
-    {
-    "folke/which-key.nvim",
-        dependencies = {"echasnovski/mini.icons"}
-    },
+    -- {
+    -- "folke/which-key.nvim",
+    --    dependencies = {"echasnovski/mini.icons"}
+    -- },
 
     -- undotree
     {'mbbill/undotree'},
@@ -112,20 +117,12 @@ require("lazy").setup({
         }
     },
 
-    {
-        'chipsenkbeil/distant.nvim', 
-        branch = 'v0.3',
-        config = function()
-            require('distant'):setup()
-        end
-    },
-
     -- web dev
     {'ray-x/web-tools.nvim'}, -- command: BrowserSync
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
-  install = { colorscheme = { "habamax" } },
+  install = { colorscheme = { "catppuccin" } },
   -- automatically check for plugin updates
   checker = { enabled = true },
 })
