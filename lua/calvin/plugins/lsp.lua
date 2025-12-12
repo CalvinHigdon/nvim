@@ -51,6 +51,9 @@ cmp.setup({
   mapping = cmp.mapping.preset.insert({}),
 })
 
+-- By the way, now, we specify our lsp servers in #treesitter.lua
+--
+--
 -- local lsp = require('lsp-zero')
 --
 -- -- Reserve a space in the gutter
