@@ -1,4 +1,5 @@
 require("calvin.plugins-setup")
+require("calvin.core.colorscheme")
 require("calvin.core.options")
 require("calvin.core.keymaps")
 require("calvin.plugins.comment")
@@ -8,7 +9,6 @@ require("calvin.plugins.mason")
 require("calvin.plugins.lsp")
 require("calvin.plugins.telescope")
 require("calvin.plugins.treesitter")
-require("calvin.core.colorscheme")
 require("calvin.plugins.web-tools")
 require("calvin.plugins.themery")
 

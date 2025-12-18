@@ -1,6 +1,6 @@
 require ('nvim-treesitter.install').compilers = {"zig", "cc", "gcc", "cl"}
 
-require'nvim-treesitter.configs'.setup {
+require('nvim-treesitter').setup {
   -- A list of parser names, or "all"
   ensure_installed = { "javascript", "cpp", "c", "lua", "rust", "python", "css", "angular" },
 

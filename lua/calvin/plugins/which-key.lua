@@ -1,8 +1,6 @@
-require("which-key").setup({
-    win = {
-        border = "single",
-        margin = {0, 0, 1, 0}
-    },
-})
-
-
+-- require("which-key").setup({
+--     win = {
+--         border = "single",
+--         margin = {0, 0, 1, 0}
+--     },
+-- })

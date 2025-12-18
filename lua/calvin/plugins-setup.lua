@@ -76,7 +76,7 @@ require("lazy").setup({
     {'theprimeagen/harpoon'},
     
     -- fuzzy finding
-    -- {{ 'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' }},
+    -- {{ 'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' }}
     
     -- init.lua:
     {

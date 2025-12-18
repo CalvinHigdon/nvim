@@ -1,4 +1,4 @@
-package.path = package.path .. ";/home/calvinhigdon/.config/nvim/lua/calvin/core/?.lua;C://Users/calvi/AppData/Local/nvim/lua/calvin/core/?.lua"
+package.path = package.path .. ";/root/.config/nvim/lua/calvin/core/?.lua;/home/calvinhigdon/.config/nvim/lua/calvin/core/?.lua;C://Users/calvi/AppData/Local/nvim/lua/calvin/core/?.lua"
 local themes = require("colorscheme")
 
 require("themery").setup({

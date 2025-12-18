@@ -16,5 +16,5 @@ nvimtree.setup({
     view = {
         relativenumber=true,
         number=true,
-    }
+    },
 })
