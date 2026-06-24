@@ -101,7 +101,7 @@ require("lazy").setup({
             {'mason-org/mason-lspconfig.nvim'},
             {'mason-org/mason.nvim'},
             {'neovim/nvim-lspconfig'},
-            
+
 
             -- Autocompletion
             {'hrsh7th/nvim-cmp'},
