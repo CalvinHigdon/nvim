@@ -12,10 +12,10 @@ keymap.set("n", "<leader>s=", "<C-w>=") -- make split windows equal width
 keymap.set("n", "<leader>sx", ":close<CR>") -- close current split window
 -- CTRL-h goes left window, CTRL-l goes right window
 
-keymap.set("n", "<leader>to", ":tabnew<CR>") -- open new tab
-keymap.set("n", "<leader>tx", ":tabclose<CR>") -- close tab
-keymap.set("n", "<leader>tn", ":tabn<CR>") -- next tab
-keymap.set("n", "<leader>tp", ":tabp<CR>") -- previous tab
+-- keymap.set("n", "<leader>to", ":tabnew<CR>") -- open new tab
+-- keymap.set("n", "<leader>tx", ":tabclose<CR>") -- close tab
+-- keymap.set("n", "<leader>tn", ":tabn<CR>") -- next tab
+-- keymap.set("n", "<leader>tp", ":tabp<CR>") -- previous tab
 
 keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- visual mode moving lines down
 keymap.set("v", "K", ":m '<-2<CR>gv=gv") -- visual mode moving lines up
@@ -66,18 +66,19 @@ keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
 keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>")
 keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>")
 keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
-keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
+-- keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
 
 -- harpoon
 local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
 
-keymap.set("n", "<leader>a", mark.add_file)
-keymap.set("n", "<C-e>", ui.toggle_quick_menu)
+keymap.set("n", "<leader>h", mark.add_file)
+-- keymap.set("n", "<C-e>", ui.toggle_quick_menu)
+keymap.set("n", "<C-y>", ui.toggle_quick_menu)
 
 
-keymap.set("n", "<C-y>", function() ui.nav_file(1) end)
-keymap.set("n", "<C-t>", function() ui.nav_file(2) end)
+-- keymap.set("n", "<C-y>", function() ui.nav_file(1) end)
+-- keymap.set("n", "<C-t>", function() ui.nav_file(2) end)
 keymap.set("n", "<C-n>", function() ui.nav_next() end)
 
 -- undotree

@@ -24,6 +24,12 @@ vim.g.maplocalleader = "\\"
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
+    {
+      "vhyrro/luarocks.nvim",
+      priority = 1000, -- Very high priority is required, luarocks.nvim should run as the first plugin in your config.
+      config = true,
+    },
+
     {"folke/lazy.nvim"},
 
     -- lua functions a lot of plugins use
@@ -77,18 +83,29 @@ require("lazy").setup({
     
     -- fuzzy finding
     -- {{ 'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' }}
-    
-    -- init.lua:
     {
-    'nvim-telescope/telescope.nvim', tag = '0.1.8',
-    -- or                              , branch = '0.1.x',
-      dependencies = { 'nvim-lua/plenary.nvim',  'iruzo/ripgrep.nvim', 'sharkdp/fd'}
+        'nvim-telescope/telescope.nvim', version = '*',
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            -- optional but recommended
+            { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+        }
     },
+    -- {
+    -- 'nvim-telescope/telescope.nvim', branch = 'master',
+    --   dependencies = { 'nvim-lua/plenary.nvim',  'iruzo/ripgrep.nvim', 'sharkdp/fd'}
+    -- },
 
     -- treesitter
     {
         'nvim-treesitter/nvim-treesitter',
         run = 'TSUpdate'
+    },
+    {
+        "romus204/tree-sitter-manager.nvim",
+        config = function()
+            require("tree-sitter-manager").setup()
+        end,
     },
 
 
@@ -98,9 +115,9 @@ require("lazy").setup({
         dependencies = {
             -- LSP Support
             {'neovim/nvim-lspconfig'},
-            {'mason-org/mason-lspconfig.nvim'},
-            {'mason-org/mason.nvim'},
-            {'neovim/nvim-lspconfig'},
+            -- {'mason-org/mason-lspconfig.nvim'},
+            -- {'mason-org/mason.nvim'},
+            -- {'neovim/nvim-lspconfig'},
 
 
             -- Autocompletion
